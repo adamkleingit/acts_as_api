@@ -47,7 +47,7 @@ module ActsAsApi
         api_root_name = api_model.collection_name
       elsif api_model.is_a?(Array) && !api_model.empty? && api_model.first.class.respond_to?(:model_name)
         api_root_name = api_model.first.class.model_name
-      elsif api_model.respond_to?(:model_name)
+      elsif api_model.respond_to?(:model_name) && api_model.is_a? Class
         api_root_name = api_model.model_name        
       else
         api_root_name = ActsAsApi::Config.default_root.to_s
